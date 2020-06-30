@@ -1,0 +1,112 @@
+export ZSH="$HOME/.oh-my-zsh"
+
+ZSH_THEME="robbyrussell"
+
+HIST_STAMPS="dd.mm.yyyy"
+
+# History.
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_SAVE_NO_DUPS
+setopt SHARE_HISTORY  # Share history across all zsh sessions.
+setopt APPEND_HISTORY  # Append to history, dont overwrite.
+setopt INC_APPEND_HISTORY  # Add commands to history immediately, not at shell exit.
+setopt HIST_EXPIRE_DUPS_FIRST  # Expire duplicates first.
+setopt HIST_IGNORE_DUPS  # Do not store duplicates.
+setopt HIST_FIND_NO_DUPS  # Ignore duplicates when searching.
+setopt HIST_REDUCE_BLANKS  # Remove blank lines from history.
+HISTFILE="$ZSH/.zsh_history"
+
+# Various options.
+setopt CORRECT
+setopt CORRECT_ALL
+unsetopt BEEP
+setopt NO_CLOBBER
+setopt AUTO_CD
+setopt EXTENDED_GLOB
+setopt NO_CASE_GLOB
+SPROMPT="zsh: correct '%B%F{red}%R%f%b' to '%B%F{cyan}%r%f%b' [nyae]? "
+
+# Oh-my-zsh plugins.
+plugins=(zsh-completions zsh-autosuggestions git git-extras git-flow-avh python vi-mode zsh-syntax-highlighting)
+autoload -U promptinit && promptinit
+
+# Completion
+zmodload zsh/complist
+autoload -U compinit && compinit
+zstyle ':completion:*' rehash true
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}  # 
+zstyle ':completion::complete:*' use-cache on
+zstyle ':completion::complete:*' cache-path ~/.zsh/cache/$HOST
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s'
+zstyle ':completion:*' menu select=1 _complete _ignored _approximate
+zstyle -e ':completion:*:approximate:*' max-errors \
+    'reply=( $(( ($#PREFIX+$#SUFFIX)/2 )) numeric )'
+zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
+zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
+zstyle -e ':completion:*:approximate:*' max-errors \
+    'reply=( $(( ($#PREFIX+$#SUFFIX)/2 )) numeric )'
+zstyle ':completion:*:expand:*' tag-order all-expansions
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*:descriptions' format '%B%d%b'
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:warnings' format 'No matches for: %d'
+zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+zstyle ':completion:*:*:kill:*:processes' command 'ps --forest -A -o pid,user,cmd'
+zstyle ':completion:*:processes-names' command 'ps axho command' 
+# Partial completion suggestions.
+zstyle ':completion:*' list-suffixes
+zstyle ':completion:*' expand prefix suffix
+setopt COMPLETE_ALIASES  # Autocomplete aliases.
+
+# Path
+typeset -U path
+path=(
+    /usr/local/sbin
+    ~/bin
+    ~/.maven-dist/bin
+    ~/.ant-dist/bin
+    ~/bin/flutter/bin
+    ~/.local/bin
+    ~/.cargo/bin
+    $path[@]
+)
+
+# Exports
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+export EDITOR='nvim'
+
+# Aliases
+alias vim=nvim
+
+# Functions
+mkd(){ mkdir "$1" && cd "$1"; }
+se(){
+    if [ -f ./env/bin/activate ]
+    then
+        source ./env/bin/activate
+    else
+        if [ -f ./.venv/bin/activate ]
+        then
+            source ./.venv/bin/activate
+        else
+            echo 'Can not activate virtual environment: not found'
+        fi
+    fi
+}
+
+# Pyenv
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+# Ghc
+[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
+
+# Load zsh configuration.
+source $ZSH/oh-my-zsh.sh
