@@ -4,7 +4,7 @@
 
 This project contains configuration for:
 
-- zsh + oh-my-zsh
+- [zsh / oh-my-zsh](oh-my-zsh)
 
 
 ## Installation
