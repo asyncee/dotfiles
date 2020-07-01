@@ -15,7 +15,6 @@ setopt HIST_EXPIRE_DUPS_FIRST  # Expire duplicates first.
 setopt HIST_IGNORE_DUPS  # Do not store duplicates.
 setopt HIST_FIND_NO_DUPS  # Ignore duplicates when searching.
 setopt HIST_REDUCE_BLANKS  # Remove blank lines from history.
-HISTFILE="$ZSH/.zsh_history"
 
 # Various options.
 setopt CORRECT
@@ -63,6 +62,13 @@ zstyle ':completion:*:processes-names' command 'ps axho command'
 zstyle ':completion:*' list-suffixes
 zstyle ':completion:*' expand prefix suffix
 setopt COMPLETE_ALIASES  # Autocomplete aliases.
+
+# Create a cache folder if it isn't exists
+if [ ! -d "$HOME/.cache/zsh" ]; then
+    mkdir -p $HOME/.cache/zsh
+fi
+export HISTFILE=$HOME/.cache/zsh/.zsh_history
+export ZSH_COMPDUMP="$HOME/.cache/zsh/zcompdump-$HOST-$ZSH_VERSION"
 
 # Path
 typeset -U path
