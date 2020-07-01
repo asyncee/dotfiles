@@ -7,7 +7,8 @@ fail() {
 DOTFILES='~/.dotfiles'
 
 # Check for dotfiles dir.
-if [ -d "$DOTFILES" ]; then
+if [[ -d "$DOTFILES" ]]
+then
     fail "ERROR: $DOTFILES directory already exists! Please remove it and try again."
     exit
 fi
