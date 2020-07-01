@@ -4,7 +4,9 @@ fail() {
     echo -e "\033[33;31m$1\033[33;0m"
 }
 
-DOTFILES='$HOME/.dotfiles'
+DOTFILES='.dotfiles'
+
+cd ~
 
 # Install zsh
 if ! [ -x "$(command -v colorls)" ]; then

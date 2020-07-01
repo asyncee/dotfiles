@@ -83,6 +83,7 @@ export EDITOR='nvim'
 
 # Aliases
 alias vim=nvim
+alias ls='colorls --sort-dirs --sort-files'
 
 # Functions
 mkd(){ mkdir "$1" && cd "$1"; }
