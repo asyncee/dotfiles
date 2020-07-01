@@ -10,5 +10,6 @@ This project contains configuration for:
 ## Installation
 
 ```bash
-curl -L https://raw.githubusercontent.com/asyncee/dotfiles/master/install.sh | bash
+git clone https://github.com/asyncee/dotfiles.git ~/.dotfiles
+bash ~/.dotfiles/install.sh
 ```
