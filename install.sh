@@ -16,5 +16,9 @@ fi
 git clone https://github.com/asyncee/dotfiles.git $DOTFILES
 
 # Install zsh
-ln -s $DOTFILES/oh-my-zh ~/.oh-my-zsh || fail "Error: ~/.oh-my-zsh already exists!"
+if ! [ -x "$(command -v colorls)" ]; then
+    echo "Installing colorls"
+    sudo gem install colorls
+fi
+ln -s $DOTFILES/oh-my-zsh ~/.oh-my-zsh || fail "Error: ~/.oh-my-zsh already exists!"
 ln -s $DOTFILES/oh-my-zsh/zshrc ~/.zshrc || fail "Error: ~/.zshrc already exists!"
