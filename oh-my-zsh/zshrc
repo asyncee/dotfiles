@@ -63,13 +63,6 @@ zstyle ':completion:*' list-suffixes
 zstyle ':completion:*' expand prefix suffix
 setopt COMPLETE_ALIASES  # Autocomplete aliases.
 
-# Create a cache folder if it isn't exists
-if [ ! -d "$HOME/.cache/zsh" ]; then
-    mkdir -p $HOME/.cache/zsh
-fi
-export HISTFILE=$HOME/.cache/zsh/.zsh_history
-export ZSH_COMPDUMP="$HOME/.cache/zsh/zcompdump-$HOST-$ZSH_VERSION"
-
 # Path
 typeset -U path
 path=(
@@ -84,12 +77,42 @@ path=(
 )
 
 # Exports
-export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 export EDITOR='nvim'
+
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+export LESS=-R
+
+# Create a cache folder if it isn't exists
+if [ ! -d "$HOME/.cache/zsh" ]; then
+    mkdir -p $HOME/.cache/zsh
+fi
+export HISTFILE=$HOME/.cache/zsh/.zsh_history
+export ZSH_COMPDUMP="$HOME/.cache/zsh/zcompdump-$HOST-$ZSH_VERSION"
 
 # Aliases
 alias vim=nvim
-alias ls='colorls --group-directories-first'
+alias ls='colorls --group-directories-first --color=always'
+alias grep='grep --color=auto'
+alias diff='diff --color=auto'
+alias cat="grc --colour=auto cat"
+alias df="grc --colour=auto df"
+alias gcc="grc --colour=auto gcc"
+alias make="grc --colour=auto make"
+alias mtr="grc --colour=auto mtr"
+alias netstat="grc --colour=auto netstat"
+alias ping="grc --colour=auto ping"
+alias ps="grc --colour=auto ps"
+alias tail="grc --colour=auto tail"
+alias traceroute="grc --colour=auto traceroute"
+alias du="grc --colour=auto du"
+alias docker="grc --colour=auto docker"
+alias docker-machine="grc --colour=auto docker"
+alias env="grc --colour=auto env"
+alias lsof="grc --colour=auto lsof"
+alias uptime="grc --colour=auto uptime"
+alias free="grc --colour=auto free"
+alias sysctl="grc --colour=auto sysctl"
+alias systemctl="grc --colour=auto systemctl"
 
 # Functions
 mkd(){ mkdir "$1" && cd "$1"; }
