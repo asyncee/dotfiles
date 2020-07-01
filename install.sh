@@ -4,7 +4,7 @@ fail() {
     echo -e "\033[33;31m$1\033[33;0m"
 }
 
-DOTFILES='~/.dotfiles'
+DOTFILES='$HOME/.dotfiles'
 
 # Check for dotfiles dir.
 if [[ -d "$DOTFILES" ]]
