@@ -4,7 +4,8 @@
 
 This project contains configuration for:
 
-- [zsh / oh-my-zsh](oh-my-zsh)
+- [Zsh Config](oh-my-zsh)
+- [Alacritty Config](alacritty)
 
 
 ## Installation
