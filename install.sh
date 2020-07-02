@@ -8,6 +8,12 @@ mkdir -p $CONFIG
 mkdir -p $PYNVIMENVDIR
 
 #
+# Git
+#
+ln -sFfh "$DOTFILES/git" "$CONFIG/git"
+echo ">>> Installed git config"
+
+#
 # IdeaVIM
 #
 ln -sFfh "$DOTFILES/ideavimrc" "$HOME/.ideavimrc"

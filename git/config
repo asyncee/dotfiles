@@ -1,0 +1,19 @@
+[core]
+	autocrlf = input
+	editor = nvim
+[user]
+	name = asyncee
+	email = asyncee@users.noreply.github.com
+[alias]
+    checkotu = checkout
+    pll = pull
+[help]
+	autocorrect = 1
+[credential]
+	helper = osxkeychain
+[push]
+	default = simple
+	followTags = true
+[fetch]
+	prune = true
+	pruneTags = true

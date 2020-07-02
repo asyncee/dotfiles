@@ -8,6 +8,7 @@ This project contains configuration for:
 - [Kitty Config](kitty)
 - [Neovim Config](nvim)
 - [IdeaVIM Config](.ideavimrc)
+- [Git Config](git)
 
 ## Installation
 
