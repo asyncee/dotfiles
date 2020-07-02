@@ -7,6 +7,7 @@ This project contains configuration for:
 - [Zsh Config](oh-my-zsh)
 - [Kitty Config](kitty)
 - [Neovim Config](nvim)
+- [IdeaVIM Config](.ideavimrc)
 
 ## Installation
 

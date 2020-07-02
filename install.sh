@@ -8,10 +8,16 @@ mkdir -p $CONFIG
 mkdir -p $PYNVIMENVDIR
 
 #
+# IdeaVIM
+#
+ln -sFfh "$DOTFILES/ideavimrc" "$HOME/.ideavimrc"
+echo ">>> Installed .ideavimrc"
+
+#
 # Kitty
 #
 ln -sFfh "$DOTFILES/kitty" "$CONFIG/kitty"
-    echo ">>> Installed Kitty config"
+echo ">>> Installed Kitty config"
 
 #
 # Zsh
