@@ -1,9 +1,17 @@
 #!/bin/bash
 
-DOTFILES='.dotfiles'
+DOTFILES="$HOME/.dotfiles"
+CONFIG="$HOME/.config"
+PYNVIMENVDIR="$HOME/.pyenv"
 
-cd ~
-mkdir -p ~/.config
+mkdir -p $CONFIG
+mkdir -p $PYNVIMENVDIR
+
+#
+# Kitty
+#
+ln -sFfh "$DOTFILES/kitty" "$CONFIG/kitty"
+    echo ">>> Installed Kitty config"
 
 #
 # Zsh
@@ -11,8 +19,10 @@ mkdir -p ~/.config
 
 # Colorls dependency.
 if ! [ -x "$(command -v colorls)" ]; then
+    brew tap homebrew/cask-fonts
+    brew cask install font-hack-nerd-font
     sudo gem install colorls
-    echo ">>> Installed colorls"
+    echo ">>> Installed colorls and nerd fonts"
 fi
 
 # Grc dependency.
@@ -21,16 +31,9 @@ if ! [ -x "$(command -v grc)" ]; then
     echo ">>> Installed grc"
 fi
 
-ln -sFfh ~/$DOTFILES/oh-my-zsh/ ~/.oh-my-zsh
-ln -sFfh ~/$DOTFILES/oh-my-zsh/zshrc ~/.zshrc
+ln -sFfh "$DOTFILES/oh-my-zsh/" "$HOME/.oh-my-zsh"
+ln -sFfh "$DOTFILES/oh-my-zsh/zshrc" "$HOME/.zshrc"
 echo ">>> Installed zhs config"
-
-#
-# Alacritty
-#
-
-ln -sFfh ~/$DOTFILES/alacritty ~/.config/alacritty
-echo ">>> Installed alacritty config"
 
 #
 # Vim
@@ -51,15 +54,13 @@ if ! [ -x "$(command -v rg)" ]; then
     echo ">>> Installed rg"
 fi
 
-ln -sFfh ~/$DOTFILES/nvim ~/.config/nvim
+ln -sFfh "$DOTFILES/nvim" "$CONFIG/nvim"
 nvim +PlugInstall +qall
 echo ">>> Installed nvim config"
-if [ ! -d ~/.pyenv/nvimenv ]; then
-    mkdir -p ~/.pyenv
-    cd ~/.pyenv
-    virtualenv -p python3 nvimenv
-    ./nvimenv/bin/pip install pynvim
-    ./nvimenv/bin/python -c 'import pynvim'
+if [ ! -d "$PYNVIMENVDIR/nvimenv" ]; then
+    virtualenv -p python3 "$PYNVIMENVDIR/nvimenv"
+    $PYNVIMENVDIR/nvimenv/bin/pip install pynvim
+    $PYNVIMENVDIR/nvimenv/bin/python -c 'import pynvim'
     echo ">>> Installed nvim python support"
 fi
 echo ">>> Do not forget to install VimR: https://github.com/qvacua/vimr/releases"

@@ -28,6 +28,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Syntax
     Plug 'ap/vim-css-color'
 " Color-schemes
+    Plug 'vim-airline/vim-airline'
     Plug 'morhetz/gruvbox'
 call plug#end()
 
@@ -79,17 +80,6 @@ au WinEnter * set cursorline cursorcolumn
 " Auto source vim configuration
 au! BufWritePost $MYVIMRC source %
 
-"Status-line
-set statusline=
-set statusline+=%#Search#
-set statusline+=\ %y
-set statusline+=%#CursorLineNr#
-set statusline+=\ %F
-set statusline+=%=
-set statusline+=%#Search#
-set statusline+=\ %l/%L
-set statusline+=\ [%c]
-
 " Comment in normal and visual modes.
 nmap <D-/> :Commentary<CR>j
 vmap <D-/> :Commentary<CR>gv
@@ -119,7 +109,7 @@ let g:vimwiki_list = [{'path': '~/vimwiki/docs/', 'syntax': 'markdown', 'ext': '
 let g:startify_bookmarks = [
         \ { 'c': '~/.config/nvim/init.vim' },
         \ { 'z': '~/.zshrc' },
-        \ { 'a': '~/.config/alacritty/alacritty.yml' },
+        \ { 'k': '~/.config/kitty/kitty.conf' },
         \ { 't': '~/.tmux.conf' },
         \ { 'd': '~/.dotfiles' },
         \ ]
@@ -148,3 +138,4 @@ map <leader>ff :Files<CR>
 map <leader>fb :Buffers<CR>
 nmap <leader>fg :Rg<CR>
 nmap <leader>fm :Marks<CR>
+

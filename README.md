@@ -5,7 +5,7 @@
 This project contains configuration for:
 
 - [Zsh Config](oh-my-zsh)
-- [Alacritty Config](alacritty)
+- [Kitty Config](kitty)
 - [Neovim Config](nvim)
 
 ## Installation
