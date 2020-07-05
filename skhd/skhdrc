@@ -1,0 +1,5 @@
+# Launch terminal emulator
+alt - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
+
+# Disable "Hide window" system shortcut.
+cmd - h: 

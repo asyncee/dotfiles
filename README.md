@@ -9,6 +9,8 @@ This project contains configuration for:
 - [Neovim Config](nvim)
 - [IdeaVIM Config](.ideavimrc)
 - [Git Config](git)
+- [Skhd Config](skhd)
+- [Limelight Config](limelight)
 
 ## Installation
 

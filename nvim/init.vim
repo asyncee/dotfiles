@@ -24,8 +24,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'airblade/vim-rooter'
     Plug 'nginx/nginx', { 'rtp': 'contrib/vim' }
     Plug 'mattn/emmet-vim'
-    Plug 'tmux-plugins/vim-tmux'
-" Syntax
     Plug 'ap/vim-css-color'
 " Color-schemes
     Plug 'vim-airline/vim-airline'
@@ -112,6 +110,7 @@ let g:startify_bookmarks = [
         \ { 'k': '~/.config/kitty/kitty.conf' },
         \ { 't': '~/.tmux.conf' },
         \ { 'd': '~/.dotfiles' },
+        \ { 's': '~/.config/skhd/skhdrc' },
         \ ]
 
 let g:startify_lists = [
@@ -126,8 +125,9 @@ let g:startify_change_to_vcs_root = 1
 let g:startify_fortune_use_unicode = 1
 let g:startify_session_persistence = 1
 let g:startify_enable_special = 0
+nmap <Leader>ss :w<CR>:bd<CR>:Startify<CR>
 nmap <Leader>sv :w<CR>:vsplit<CR>:Startify<CR>
-nmap <Leader>ss :w<CR>:split<CR>:Startify<CR>
+nmap <Leader>sh :w<CR>:split<CR>:Startify<CR>
 nmap <Leader>st :w<CR>:tabnew<CR>:Startify<CR>
 
 " Vim-rooter
@@ -138,4 +138,3 @@ map <leader>ff :Files<CR>
 map <leader>fb :Buffers<CR>
 nmap <leader>fg :Rg<CR>
 nmap <leader>fm :Marks<CR>
-

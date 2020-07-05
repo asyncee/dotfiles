@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+limelight -m config width            3
+limelight -m config radius           2
+limelight -m config placement        interior
+limelight -m config active_color     0xff458588
+limelight -m config normal_color     0xff555555
