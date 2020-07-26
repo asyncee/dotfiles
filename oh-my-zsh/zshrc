@@ -79,6 +79,7 @@ path=(
 # Exports
 export EDITOR='nvim'
 
+export DOCKER_BUILDKIT=1
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 export LESS=-R
 
@@ -97,7 +98,6 @@ alias diff='diff --color=auto'
 alias cat="grc --colour=auto cat"
 alias df="grc --colour=auto df"
 alias gcc="grc --colour=auto gcc"
-alias make="grc --colour=auto make"
 alias mtr="grc --colour=auto mtr"
 alias netstat="grc --colour=auto netstat"
 alias ping="grc --colour=auto ping"
