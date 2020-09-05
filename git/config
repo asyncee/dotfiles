@@ -19,3 +19,7 @@
 	pruneTags = true
 [pull]
 	rebase = false
+[diff]
+	submodule = log
+[status]
+	submodulesummary = 1

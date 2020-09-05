@@ -1,7 +1,0 @@
-# Launch terminal emulator
-
-# Press ⌘~ to launch Kitty.
-cmd - 0x32 : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
-
-# Disable "Hide window" system shortcut.
-cmd - h: 

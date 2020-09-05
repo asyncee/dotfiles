@@ -76,25 +76,3 @@ if [ ! -d "$PYNVIMENVDIR/nvimenv" ]; then
     echo ">>> Installed nvim python support"
 fi
 echo ">>> Do not forget to install VimR: https://github.com/qvacua/vimr/releases"
-
-#
-# Limelight
-#
-
-ln -sFfh "$DOTFILES/limelight" "$CONFIG/limelight"
-bash limelight/install_limelight.sh
-echo ">>> Installed limelight"
-
-#
-# Amethyst
-#
-brew cask install amethyst
-echo ">>> Installed Amethyst"
-
-#
-# skhd
-#
-ln -sFfh "$DOTFILES/skhd" "$CONFIG/skhd"
-brew install koekeishiya/formulae/skhd
-brew services start skhd
-echo ">>> Installed skhd"
