@@ -34,6 +34,7 @@ if ! [ -x "$(command -v colorls)" ]; then
     brew tap homebrew/cask-fonts
     brew cask install font-hack-nerd-font
     sudo gem install colorls
+    ln -sFfh "$DOTFILES/colorls" "$CONFIG/colorls"
     echo ">>> Installed colorls and nerd fonts"
 fi
 
