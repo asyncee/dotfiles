@@ -85,6 +85,8 @@ export DOCKER_BUILDKIT=1
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 export LESS=-R
 
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-15.jdk
+
 # Create a cache folder if it isn't exists
 if [ ! -d "$HOME/.cache/zsh" ]; then
     mkdir -p $HOME/.cache/zsh
