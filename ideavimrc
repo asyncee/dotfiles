@@ -2,3 +2,4 @@ let mapleader=","
 set surround
 set easymotion
 set number relativenumber
+set ideavimsupport+=singleline
