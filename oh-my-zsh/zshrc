@@ -94,6 +94,11 @@ fi
 export HISTFILE=$HOME/.cache/zsh/.zsh_history
 export ZSH_COMPDUMP="$HOME/.cache/zsh/zcompdump-$HOST-$ZSH_VERSION"
 
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 # Aliases
 alias vim=nvim
 alias ls='colorls --group-directories-first --color=always'
