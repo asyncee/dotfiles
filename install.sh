@@ -26,6 +26,12 @@ ln -sFfh "$DOTFILES/kitty" "$CONFIG/kitty"
 echo ">>> Installed Kitty config"
 
 #
+# Hammerspoon
+#
+ln -sFfh "$DOTFILES/hammerspoon" "$HOME/.hammerspoon"
+echo ">>> Installed Hammerspoon config"
+
+#
 # Zsh
 #
 
