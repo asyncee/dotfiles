@@ -27,7 +27,7 @@ setopt NO_CASE_GLOB
 SPROMPT="zsh: correct '%B%F{red}%R%f%b' to '%B%F{cyan}%r%f%b' [nyae]? "
 
 # Oh-my-zsh plugins.
-plugins=(zsh-completions zsh-autosuggestions git git-extras git-flow-avh python vi-mode zsh-syntax-highlighting)
+plugins=(zsh-completions zsh-autosuggestions git git-extras gitfast git-flow-avh python vi-mode zsh-syntax-highlighting)
 autoload -U promptinit && promptinit
 
 # Completion
@@ -87,6 +87,10 @@ export LESS=-R
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-15.jdk
 
+# FNM
+export PATH=/Users/asyncee/.fnm:$PATH
+eval "`fnm env`"
+
 # Create a cache folder if it isn't exists
 if [ ! -d "$HOME/.cache/zsh" ]; then
     mkdir -p $HOME/.cache/zsh
@@ -94,14 +98,8 @@ fi
 export HISTFILE=$HOME/.cache/zsh/.zsh_history
 export ZSH_COMPDUMP="$HOME/.cache/zsh/zcompdump-$HOST-$ZSH_VERSION"
 
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # Aliases
 alias vim=nvim
-alias ls='colorls --group-directories-first --color=always'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 alias cat="grc --colour=auto cat"
