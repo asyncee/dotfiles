@@ -35,15 +35,6 @@ echo ">>> Installed Hammerspoon config"
 # Zsh
 #
 
-# Colorls dependency.
-if ! [ -x "$(command -v colorls)" ]; then
-    brew tap homebrew/cask-fonts
-    brew cask install font-hack-nerd-font
-    sudo gem install colorls
-    ln -sFfh "$DOTFILES/colorls" "$CONFIG/colorls"
-    echo ">>> Installed colorls and nerd fonts"
-fi
-
 # Grc dependency.
 if ! [ -x "$(command -v grc)" ]; then
     brew install grc
