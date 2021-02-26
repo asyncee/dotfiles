@@ -18,18 +18,13 @@ else
         Plug 'mhinz/vim-startify'
         Plug 'voldikss/vim-floaterm'
         Plug 'unblevable/quick-scope'
-        Plug 'vimwiki/vimwiki'
         Plug 'vim-pandoc/vim-pandoc'
         Plug 'vim-pandoc/vim-pandoc-syntax' 
-        Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-        Plug 'junegunn/fzf.vim'
         Plug 'airblade/vim-rooter'
+        Plug 'neoclide/coc.nvim', {'branch': 'release'}
         Plug 'nginx/nginx', { 'rtp': 'contrib/vim' }
         Plug 'ap/vim-css-color'
-        Plug 'easymotion/vim-easymotion'
         Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-        Plug 'neoclide/coc.nvim', {'branch': 'release'}
-        Plug 'preservim/nerdtree'
     " HTML / Javascript / React / JSX
         Plug 'mattn/emmet-vim'
         Plug 'pangloss/vim-javascript'
@@ -38,6 +33,7 @@ else
     " Color-schemes
         Plug 'vim-airline/vim-airline'
         Plug 'morhetz/gruvbox'
+        Plug 'ericbn/vim-solarized'
     call plug#end()
 
     " General settings
@@ -143,12 +139,6 @@ else
 
     " Vim-rooter
     let g:rooter_change_directory_for_non_project_files = 'current'
-
-    " fzf
-    map <leader>ff :Files<CR>
-    map <leader>fb :Buffers<CR>
-    nmap <leader>fg :Rg<CR>
-    nmap <leader>fm :Marks<CR>
 
     " Vim-jsx-pretty
     let g:vim_jsx_pretty_colorful_config = 1
@@ -287,7 +277,4 @@ else
     nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
     " Resume latest coc list.
     nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
-    " NerdTree
-    map <Leader>nt :NERDTreeToggle<CR>
 endif
