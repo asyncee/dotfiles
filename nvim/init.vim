@@ -63,7 +63,8 @@ else
     set timeoutlen=1000
     set updatetime=100
     set cmdheight=2
-    colorscheme gruvbox
+    colorscheme solarized
+    set background=light
 
     " Python 3 support
     " cd ~/.pyenv
