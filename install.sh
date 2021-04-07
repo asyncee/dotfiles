@@ -41,9 +41,13 @@ if ! [ -x "$(command -v grc)" ]; then
     echo ">>> Installed grc"
 fi
 
-ln -sFfh "$DOTFILES/oh-my-zsh/" "$HOME/.oh-my-zsh"
+# Oh-my-zsh
+rm -rf "$HOME/.oh-my-zsh"
+rm "$HOME/.zshrc"
+RUNZSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+rm "$HOME/.zshrc"
 ln -sFfh "$DOTFILES/oh-my-zsh/zshrc" "$HOME/.zshrc"
-echo ">>> Installed zhs config"
+echo ">>> Installed zsh config"
 
 #
 # Vim
