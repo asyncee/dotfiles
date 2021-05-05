@@ -3,3 +3,4 @@ set surround
 set easymotion
 set number relativenumber
 set ideavimsupport+=singleline
+inoremap jj <Esc>

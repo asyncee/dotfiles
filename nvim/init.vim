@@ -66,6 +66,9 @@ else
     colorscheme solarized
     set background=light
 
+    " Use jj as escape
+    inoremap jj <Esc>
+
     " Python 3 support
     " cd ~/.pyenv
     " virtualenv -p python3 nvimenv
