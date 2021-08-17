@@ -10,6 +10,7 @@ mkdir -p $PYNVIMENVDIR
 #
 # Git
 #
+brew install git git-flow-avh
 ln -sFfh "$DOTFILES/git" "$CONFIG/git"
 echo ">>> Installed git config"
 
@@ -18,12 +19,6 @@ echo ">>> Installed git config"
 #
 ln -sFfh "$DOTFILES/ideavimrc" "$HOME/.ideavimrc"
 echo ">>> Installed .ideavimrc"
-
-#
-# Kitty
-#
-ln -sFfh "$DOTFILES/kitty" "$CONFIG/kitty"
-echo ">>> Installed Kitty config"
 
 #
 # Hammerspoon
@@ -35,7 +30,7 @@ echo ">>> Installed Hammerspoon config"
 # Zsh
 #
 
-# Grc dependency.
+# Grc
 if ! [ -x "$(command -v grc)" ]; then
     brew install grc
     echo ">>> Installed grc"
