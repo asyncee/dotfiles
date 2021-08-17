@@ -88,10 +88,6 @@ export LESS=-R
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-15.jdk
 
-# FNM
-export PATH=/Users/asyncee/.fnm:$PATH
-eval "`fnm env`"
-
 # Create a cache folder if it isn't exists
 if [ ! -d "$HOME/.cache/zsh" ]; then
     mkdir -p $HOME/.cache/zsh
