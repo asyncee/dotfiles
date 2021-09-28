@@ -139,6 +139,11 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init --path)"
   eval "$(pyenv init -)"
 fi
+# Pyenv/python m1 aliases
+alias pyenv="arch -x86_64 pyenv"
+alias virtualenv="arch -x86_64 virtualenv"
+alias python="arch -x86_64 python"
+alias poetry="arch -x86_64 poetry"
 
 # Ghc
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
@@ -146,6 +151,3 @@ fi
 # Load zsh configuration.
 source $ZSH/oh-my-zsh.sh
 
-# fnm
-export PATH=/Users/asyncee/.fnm:$PATH
-eval "`fnm env`"
