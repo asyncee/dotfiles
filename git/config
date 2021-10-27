@@ -23,3 +23,5 @@
 	submodule = log
 [status]
 	submodulesummary = 1
+[init]
+	defaultBranch = master
