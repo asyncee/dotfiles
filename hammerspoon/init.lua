@@ -1,4 +1,3 @@
-
 -- HANDLE SCROLLING
 
 local deferred = false
@@ -31,14 +30,14 @@ dragRightToScroll = hs.eventtap.new({ hs.eventtap.event.types.rightMouseDragged 
 
     deferred = false
 
-    oldmousepos = hs.mouse.getAbsolutePosition()    
+    oldmousepos = hs.mouse.absolutePosition()
 
     local dx = e:getProperty(hs.eventtap.event.properties['mouseEventDeltaX'])
     local dy = e:getProperty(hs.eventtap.event.properties['mouseEventDeltaY'])
     local scroll = hs.eventtap.event.newScrollEvent({dx * scrollmult, dy * scrollmult},{},'pixel')
     
     -- put the mouse back
-    hs.mouse.setAbsolutePosition(oldmousepos)
+    hs.mouse.absolutePosition(oldmousepos)
 
     return true, {scroll}
 end)
@@ -47,3 +46,11 @@ overrideRightMouseDown:start()
 overrideRightMouseUp:start()
 dragRightToScroll:start()
 
+-- END HANDLE SCROLLING
+
+-- HOT SWITCH
+local hotswitchHs = require("hotswitch-hs/hotswitch-hs")
+hs.hotkey.bind({"command"}, ".", function() -- Set any keybind you like
+  hotswitchHs.openOrClose()
+end)
+-- END HOT SWITCH
