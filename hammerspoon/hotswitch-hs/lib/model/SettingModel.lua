@@ -1,7 +1,9 @@
+local Debugger = require("hotswitch-hs/lib/common/Debugger")
+local Model = require("hotswitch-hs/lib/model/Model")
+
 local SETTING_KEY = "hotswitch-hs"
 
 --[[
-
 data format:
 
 settings = {
@@ -25,13 +27,11 @@ settings = {
         }
     }
 }
-
 ]]
 
-local SettingsProvider = {}
-
-SettingsProvider.new = function()
-    local obj = {}
+local SettingModel = {}
+SettingModel.new = function()
+    local obj = Model.new()
 
     obj.get = function()
         local settings = hs.settings.get(SETTING_KEY)
@@ -51,5 +51,4 @@ SettingsProvider.new = function()
 
     return obj
 end
-
-return SettingsProvider
+return SettingModel
