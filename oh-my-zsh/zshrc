@@ -152,15 +152,7 @@ source $HOME/.cargo/env
 # Load zsh configuration.
 source $ZSH/oh-my-zsh.sh
 
-# Hacks to support m1
-ARCH=`arch`
-if [[ "${ARCH}"  != "arm64" ]]; then
-    alias ibrew="arch -x86_64 /usr/local/bin/brew"
-    alias pyenv="arch -x86_64 pyenv"
-    alias python="arch -x86_64 python"
-    export PATH="/usr/local/bin:$PATH"
-    export PATH="/opt/homebrew/bin:$PATH"
-    export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl@3/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/sqlite/lib"
-    export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/openssl@3/include -I/usr/local/opt/readline/include -I/usr/local/opt/sqlite/include"
-fi
-
+# Allow openssl libraries to be dynamically loaded.
+# This is crucial to have this command because python
+# crashes otherwise (libcrypto.dylib is loaded in unsafe way).
+export DYLD_LIBRARY_PATH=$(brew --prefix openssl@1.1)/lib:$DYLD_LIBRARY_PATH
