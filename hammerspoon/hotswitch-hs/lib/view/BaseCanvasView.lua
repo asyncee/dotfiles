@@ -1,6 +1,7 @@
 local canvas = require("hs.canvas")
 
 local Debugger = require("hotswitch-hs/lib/common/Debugger")
+local TimeChecker = require("hotswitch-hs/lib/common/TimeChecker")
 local View = require("hotswitch-hs/lib/view/View")
 local CanvasConstants = require("hotswitch-hs/lib/common/CanvasConstants")
 local FrameCulculator = require("hotswitch-hs/lib/common/FrameCulculator")
@@ -16,10 +17,14 @@ BaseCanvasView.new = function(windowModel, settingModel, keyStatusModel)
     obj.clickCallback = nil
 
     obj.show = function(self)
+        local t = TimeChecker.new()
         local orderedWindows = self.windowModel:getCachedOrderedWindowsOrFetch()
+        t:diff("getCachedOrderedWindowsOrFetch")
 
         self:showRectangle(orderedWindows)
+        t:diff("showRectangle") -- sometimes, slow
         self:showWindowInfo(orderedWindows)
+        t:diff("showWindowInfo")
     end
 
     obj.hide = function(self)
@@ -30,11 +35,17 @@ BaseCanvasView.new = function(windowModel, settingModel, keyStatusModel)
     end
 
     obj.showRectangle = function(self, orderedWindows)
+        -- local t = TimeChecker.new()
         if self.baseCanvas == nil then
-            self.baseCanvas = canvas.new(FrameCulculator.calcBaseCanvasFrame(orderedWindows))
+            local frame = FrameCulculator.calcBaseCanvasFrame(orderedWindows)
+            -- t:diff("calcBaseCanvasFrame")
+            self.baseCanvas = canvas.new(frame)
+            -- t:diff("new")
         end
+        -- t:diff("canvas new")
 
         self:setElements(orderedWindows)
+        -- t:diff("setElements")
 
         -- self:activateHammerspoonWindow()
         -- self.baseCanvas:level("normal") -- don't need
@@ -111,15 +122,21 @@ BaseCanvasView.new = function(windowModel, settingModel, keyStatusModel)
     end
 
     obj.showWindowInfo = function(self, orderedWindows)
+        local t = TimeChecker.new()
         for i = 1, #orderedWindows do
             local window = orderedWindows[i]
 
+            t:diff(i)
             self:showEachKeyText(i, window)
+            t:diff("showEachKeyText")
             self:showEachAppIcon(i, window)
+            t:diff("showEachAppIcon")
             self:showEachWindowTitle(i, window)
+            t:diff("showEachWindowTitle")
         end
 
         self.baseCanvas:show()
+        t:diff("show")
     end
 
     obj.showEachKeyText = function(self, i, window)
@@ -227,10 +244,16 @@ BaseCanvasView.new = function(windowModel, settingModel, keyStatusModel)
     end
 
     obj.showEachWindowTitle = function(self, i, window)
-        local windowName = window:title()
+        local t = TimeChecker.new()
+        local windowName = window:title() -- sometimes slow
         if windowName == "" then
             windowName = window:application():name()
+            t:diff("get application name")
         end
+        -- alternative way
+        -- local windowName = window:application():name() -- more faster
+        t:diff("get window title")
+
         self.baseCanvas:appendElements({
             frame = {
                 x = CanvasConstants.PADDING * 3 + CanvasConstants.KEY_W + CanvasConstants.KEY_LEFT_PADDING + CanvasConstants.APP_ICON_W,

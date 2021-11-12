@@ -39,18 +39,28 @@ MainController.new = function()
             self.windowModel:focusPreviousWindowForCancel()
             self:finish()
         else
-            local t = TimeChecker.new()
+            local t1 = TimeChecker.new()
+
             self.windowModel.previousWindow = hs.window.frontmostWindow()
 
             -- Enable hotkeys before refresh windows,
             -- because refreshing windows is sometimes slow and take time.
+            local t2 = TimeChecker.new()
             self.hotkeyController:enableHotkeys()
+            t2:diff("MainController:enableHotkeys")
             self.panelLayoutView:activateHammerspoonWindow()
+            t2:diff("MainController:activateHammerspoonWindow")
 
             self.windowModel:refreshOrderedWindows()
+            t2:diff("MainController:refreshOrderedWindows")
             self.keyStatusModel:createKeyStatuses()
+            t2:diff("MainController:createKeyStatuses")
             self.panelLayoutView:show()
+            t2:diff("MainController:show")
             self.appWatchModel:watchAppliationDeactivated(function() self:finish() end)
+            t2:diff("MainController:watchAppliationDeactivated")
+
+            t1:diff("All")
         end
     end
 

@@ -7,7 +7,7 @@ HotSwitch-HS is a window switcher using **2 stroke hotkey** for macOS.
 It provides fastest window switching, no matter how many windows there are.
 HotSwitch-HS uses [Hammerspoon](https://www.hammerspoon.org/), and is rewritten for a substitution of [HotSwitch](https://github.com/oniatsu/HotSwitch).
 
-You can switch any windows by like `command + .` + `a (this key is fixed)`.
+You can switch any windows by like `command + .` + `x` (this key is always fixed).
 
 HotSwitch-HS's window switching steps is these.
 
@@ -59,19 +59,22 @@ git clone https://github.com/oniatsu/HotSwitch-HS.git ~/.hammerspoon/hotswitch-h
 Directory tree is like this:
 ```
 ~/.hammerspoon/
-▾ hotswitch-hs/
-  ▸ modules/
-    hotswitch-hs.lua
-    README.md
-  init.lua
+├── init.lua
+└── hotswitch-hs/
+  ├── lib/
+  ├── LICENSE
+  ├── README.md
+  └── hotswitch-hs.lua
 ```
+
+If you have installed Hammerspoon just right now, `~/.hammerspoon/init.lua` doesn't exist yet.
 
 ## 3. Put a code at your Hammerspoon's `~/.hammerspoon/init.lua`
 If the file does not exist, create it and add the codes.
 
 ```lua
 local hotswitchHs = require("hotswitch-hs/hotswitch-hs")
--- Set any keybinds you like
+-- Set a keybind you like to open HotSwitch-HS panel.
 hs.hotkey.bind({"command"}, ".", function() hotswitchHs.openOrClose() end)
 ```
 
@@ -93,6 +96,9 @@ hs.hotkey.bind({"command"}, "space", function() hotswitchHs.openOrClose() end) -
 [Here](https://www.hammerspoon.org/docs/hs.hotkey.html#bind) is how to set `hs.hotkey.bind()`.
 
 ## 4. Run Hammerspoon
+
+And open HotSwitch-HS panel by using the keybind you set.
+If you have some probrems, [check these](https://github.com/oniatsu/HotSwitch-HS#if-you-have-some-probrems).
 
 # Preferences
 
@@ -134,9 +140,22 @@ Default: the current space windows are only shown.
 
 Check these.
 
-- If a keybind you set is not enabled, open Hammerspoon console and check some error messages. First, click Hammerspoon's menubar icon. Second, click `Console...`.
-- If you want to clear HotSwtich-HS's all settings, execute code `hotswitchHs.clearSettings()` at `~/.hammerspoon/init.lua`.
+- If the keybind you set is not enabled, open Hammerspoon console and check some error messages. First, click Hammerspoon's menubar icon. Second, click `Console...`.
 - Update HotSwtich-HS. `cd ~/.hammerspoon/hotswitch-hs && git pull`
+
+## Known issues
+
+Sometimes, getting windows is failed after the macOS has woken up from sleep.
+
+It would be fixed by reloading Hammerspoon. It's possibly Hammerspoon's bug.
+I recommend that you add a keybind to reload Hammerpoon quickly.
+
+```lua
+-- For example: you can reload by "command + option + control + r".
+hs.hotkey.bind({"command", "option", "control"}, "r", function() hs.reload() end)
+-- It's message showing the completion of reloading.
+hs.alert.show("Hammerspoon is reloaded")
+```
 
 # Update
 

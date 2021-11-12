@@ -9,6 +9,10 @@ local function getDebuggable()
 end
 
 local function log(value)
+    if debuggable == false then
+        return
+    end
+
     local message
     local status, err = pcall(function()
         message = hs.inspect.inspect(value)
@@ -20,9 +24,9 @@ local function log(value)
         -- print("ERROR: debugLog") -- it has error that same as above.
     end
 
-    if debuggable then
-        hs.alert.show(message)
-    end
+    -- if debuggable then
+        -- hs.alert.show(message)
+    -- end
 end
 
 return {
