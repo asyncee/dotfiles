@@ -4,4 +4,10 @@ set easymotion
 set number relativenumber
 set ideavimsupport+=singleline
 set scrolloff=3
-inoremap jj <Esc>
+
+set NERDTree
+set vim-paragraph-motion
+set highlightedyank
+
+map <leader>t :NERDTree<CR>
+map <leader>f :NERDTreeFind<CR>
