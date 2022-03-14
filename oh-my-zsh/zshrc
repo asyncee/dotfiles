@@ -117,6 +117,7 @@ alias uptime="grc --colour=auto uptime"
 alias free="grc --colour=auto free"
 alias sysctl="grc --colour=auto sysctl"
 alias systemctl="grc --colour=auto systemctl"
+alias h="stack ghci"
 
 # Functions
 mkd(){ mkdir "$1" && cd "$1"; }
@@ -146,9 +147,6 @@ eval "$(fnm env)"
 # Cargo
 source $HOME/.cargo/env
 
-# Ghc
-[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
-
 # Load zsh configuration.
 source $ZSH/oh-my-zsh.sh
 
@@ -156,3 +154,4 @@ source $ZSH/oh-my-zsh.sh
 # This is crucial to have this command because python
 # crashes otherwise (libcrypto.dylib is loaded in unsafe way).
 export DYLD_LIBRARY_PATH=$(brew --prefix openssl@1.1)/lib:$DYLD_LIBRARY_PATH
+
