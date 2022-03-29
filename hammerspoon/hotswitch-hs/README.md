@@ -1,6 +1,6 @@
 # What is HotSwitch-HS
 
-![preview](https://user-images.githubusercontent.com/5919569/139619210-b4215c01-a1f8-41db-ad41-34a1882f13bc.png)
+![top](https://raw.githubusercontent.com/oniatsu/HotSwitch-HS/main/doc/img/top.png)
 
 HotSwitch-HS is a window switcher using **2 stroke hotkey** for macOS.
 
@@ -11,20 +11,38 @@ You can switch any windows by like `command + .` + `x` (this key is always fixed
 
 HotSwitch-HS's window switching steps is these.
 
-1. Register **a fixed key** to windows on list. (Press `Space`)
-2. Switch any windows by using the key you registered.
+1. Register **a fixed key** to windows on list. (Press `Space`. It's easy and fast.)
+2. Switch any windows by using the key you registered. (You can switch in a flash without thinking time.)
 
 In addition, HotSwitch-HS provides auto generated keys before your key registration.
 However, I highly recommend that you register keys, because it enable you to switch windows faster than ever.
 
 # Usage
 
-HotSwitch-HS's window switching steps is these.
+## Simple way
+
+Try it. It's easy and fast to understand.
+
+| Key | Action |
+| --- | ------ |
+| The key you set | Open or close the HotSwitch-HS panel |
+| `Space` | Toggle registration mode |
+| `Tab` or `Down` | Select a next window |
+| `Shift+Tab` or `Up` | Select a previous window |
+| `Delete` | Delete the key on the selected window |
+| `Return` | Focus the selected window |
+| `Escape` | Close the panal |
+| `[a-zA-Z0-9]` | Focus the window or register the key |
+| `-` or `[` or `]` or `.` or `/` | Focus the window or register the key |
+
+## Details
+
+Concretely, HotSwitch-HS's window switching steps is these.
 
 1. Register **a fixed key** to windows on list.
 2. Switch any windows by using the key you registered.
 
-## 1. Register **a fixed key** to windows on list.
+### 1. Register **a fixed key** to windows on list.
 
 1. Open HotSwitch-HS panel. (Press `command + .` that you registered)
 2. Select a window on lists. (Press `Tab` or cursor keys.)
@@ -35,7 +53,7 @@ The registered key become a reserversion key, so the key doesn't appear as auto 
 
 If you want to delete a registered key combined with the window, select the window on lists and press `Delete`.
 
-## 2. Switch any windows by using the key you registered.
+### 2. Switch any windows by using the key you registered.
 
 1. Open HotSwitch-HS panel. (Press `command + .` that you registered)
 2. Switch the target window by using **a fixed key**. (Press the key you registered.)
@@ -74,26 +92,51 @@ If the file does not exist, create it and add the codes.
 
 ```lua
 local hotswitchHs = require("hotswitch-hs/hotswitch-hs")
--- Set a keybind you like to open HotSwitch-HS panel.
-hs.hotkey.bind({"command"}, ".", function() hotswitchHs.openOrClose() end)
+hotswitchHs.enableAutoUpdate() -- If you don't want to update automatically, remove this line.
+hs.hotkey.bind({"command"}, ".", hotswitchHs.openOrClose) -- Set a keybind you like to open HotSwitch-HS panel.
 ```
 
-For example, you can bind like these.
+For example, you can set the keybind to open HotSwitch-HS like these.
 
 ```lua
 -- These are valid.
-hs.hotkey.bind({"command"}, ".", function() hotswitchHs.openOrClose() end) -- command + .
-hs.hotkey.bind({"command"}, ";", function() hotswitchHs.openOrClose() end) -- command + ;
-hs.hotkey.bind({"option"}, "tab", function() hotswitchHs.openOrClose() end) -- option + tab
-hs.hotkey.bind({"control"}, 'space', function() hotswitchHs.openOrClose() end) -- control + space
-hs.hotkey.bind({"command", "shift"}, "a", function() hotswitchHs.openOrClose() end) -- command + shift + a
+hs.hotkey.bind({"command"}, ".", hotswitchHs.openOrClose) -- command + .
+hs.hotkey.bind({"command"}, ";", hotswitchHs.openOrClose) -- command + ;
+hs.hotkey.bind({"option"}, "tab", hotswitchHs.openOrClose) -- option + tab
+hs.hotkey.bind({"control"}, 'space', hotswitchHs.openOrClose) -- control + space
+hs.hotkey.bind({"command", "shift"}, "a", hotswitchHs.openOrClose) -- command + shift + a
 
 -- These are NOT valid normally. Hammerspoon cannot override the keys, because the keys may be registered and used by macOS.
-hs.hotkey.bind({"command"}, "tab", function() hotswitchHs.openOrClose() end) -- command + tab
-hs.hotkey.bind({"command"}, "space", function() hotswitchHs.openOrClose() end) -- command + space
+hs.hotkey.bind({"command"}, "tab", hotswitchHs.openOrClose) -- command + tab
+hs.hotkey.bind({"command"}, "space", hotswitchHs.openOrClose) -- command + space
 ```
 
 [Here](https://www.hammerspoon.org/docs/hs.hotkey.html#bind) is how to set `hs.hotkey.bind()`.
+
+### Advanced option
+
+If you want to replace the macOS's app switcher `command + tab` with HotSwitch-HS, you can do forcibly by using [Karabiner-Elements](https://karabiner-elements.pqrs.org/).
+
+#### `~/.config/karabiner/karabiner.json`
+
+```json
+{
+    "from": {
+        "key_code": "tab",
+        "modifiers": { "mandatory": [ "command" ] }
+    },
+    "to": [ {
+        "key_code": "f13"
+    } ],
+    "type": "basic"
+}
+```
+
+#### `~/.hammerspoon/init.lua`
+
+```lua
+hs.hotkey.bind({}, "f13", hotswitchHs.openOrClose)
+```
 
 ## 4. Run Hammerspoon
 
@@ -108,12 +151,21 @@ For example:
 
 ```lua
 local hotswitchHs = require("hotswitch-hs/hotswitch-hs")
+hotswitchHs.enableAutoUpdate()
 hotswitchHs.setAutoGeneratedKeys({"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"})
 hotswitchHs.enableAllSpaceWindows()
-hs.hotkey.bind({"command"}, ".", function() hotswitchHs.openOrClose() end)
+hs.hotkey.bind({"command"}, ".", hotswitchHs.openOrClose)
 ```
 
 See below to know what these means.
+
+## Auto update
+
+Add this. It will update HotSwitch-HS by `git pull` automatically when needed.
+
+```lua
+hotswitchHs.enableAutoUpdate()
+```
 
 ## Auto generated keys
 
@@ -124,7 +176,7 @@ The order you specified will be used to generate keys.
 hotswitchHs.setAutoGeneratedKeys({"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"})
 ```
 
-Default auto generated keys are [these](https://github.com/oniatsu/HotSwitch-HS/blob/main/lib/common/KeyConstants.lua#L10-L12).
+Default auto generated keys are [these](https://github.com/oniatsu/HotSwitch-HS/blob/main/lib/common/KeyConstants.lua#L24-L26).
 
 ## Showing all space windows
 
@@ -135,6 +187,23 @@ hotswitchHs.enableAllSpaceWindows()
 ```
 
 Default: the current space windows are only shown.
+
+## Additonal symbol keys
+
+You can add symbol keys to register windows. (Only the [Japanese keyboard layout symbols](https://github.com/oniatsu/HotSwitch-HS/blob/main/lib/common/KeyConstants.lua#L31) are available now.)
+
+```lua
+hotswitchHs.addJapaneseKeyboardLayoutSymbolKeys()
+```
+
+## Always showing the panel on primary screen
+
+To show the panel not on main screen but on primary screen.
+Main screen is the one containing the currently focused window.
+
+```lua
+hotswitchHs.setPanelToAlwaysShowOnPrimaryScreen()
+```
 
 # If you have some probrems,
 
@@ -147,30 +216,73 @@ Check these.
 
 Sometimes, getting windows is failed after the macOS has woken up from sleep.
 
-It would be fixed by reloading Hammerspoon. It's possibly Hammerspoon's bug.
-I recommend that you add a keybind to reload Hammerpoon quickly.
+It would be fixed by reloading Hammerspoon config. It's possibly Hammerspoon's bug.
+I recommend that you add a keybind to reload Hammerpoon config quickly.
 
 ```lua
 -- For example: you can reload by "command + option + control + r".
-hs.hotkey.bind({"command", "option", "control"}, "r", function() hs.reload() end)
+hs.hotkey.bind({"command", "option", "control"}, "r", hs.reload)
+hs.hotkey.bind({"command"}, ".", hotswitchHs.openOrClose)
 -- It's message showing the completion of reloading.
 hs.alert.show("Hammerspoon is reloaded")
 ```
 
-# Update
+# Update manually
 
-Execute these command at terminal.
 ```
 cd ~/.hammerspoon/hotswitch-hs
 git pull
 ```
 
+# Uninstallation
+
+```
+rm -rf ~/.hammerspoon/hotswitch-hs
+```
+
 # Development
+
+## Requirements
+
+- Hammerspoon
+
+## Steps
+
+1. Edit codes.
+2. Reload Hammerspoon config and check that it's working correctly.
+
+### Owner's steps
+
+3. Check latest git tag. (`git describe --tags --abbrev=0`)
+4. Add a new git tag.
+5. Push the tag. Then, the release on GitHub is automatically created.
+
+### Option
+
+If you would update the class diagram,
+1. Install PlantUML. (`brew install graphviz && brew install plantuml`)
+2. Edit `doc/uml/class_diagram.pu`.
+3. Execute `plantuml doc/uml -o ../img` at your terminal.
+
+## Directory structure
 
 The class diagram is roughly like this.
 
-![class_diagram](https://raw.githubusercontent.com/oniatsu/HotSwitch-HS/main/uml/class_diagram.png)
+![class_diagram](https://raw.githubusercontent.com/oniatsu/HotSwitch-HS/main/doc/img/class_diagram.png)
 
 ## Note
 
 - Pay attention to Lua's garvage collection.
+
+# Some ChangeLogs
+
+- v2.2.5: Add option to always show the panel on primary screen
+  - `hotswitchHs.setPanelToAlwaysShowOnPrimaryScreen()`
+- v2.1.5: Change saving keys to use bundleID instead of app name
+  - If you used this app before this version, you need register keys again.
+- v2.1.0: Add auto updater
+  - `hotswitchHs.enableAutoUpdate()`
+- v2.0.0: Connect Git tag with GitHub Release
+- v1.17: Add auto generated keys
+- v1.4: Change app info text to app icon on panel
+- v1.0: First release

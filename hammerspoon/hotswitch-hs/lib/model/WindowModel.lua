@@ -2,7 +2,9 @@ local Debugger = require("hotswitch-hs/lib/common/Debugger")
 local TimeChecker = require("hotswitch-hs/lib/common/TimeChecker")
 local Model = require("hotswitch-hs/lib/model/Model")
 
-local SUBSCRIPTION_TARGET = {hs.window.filter.windowsChanged, hs.window.filter.windowTitleChanged}
+-- local SUBSCRIPTION_TARGET = {hs.window.filter.windowAllowed, hs.window.filter.windowCreated, hs.window.filter.windowsChanged, hs.window.filter.windowTitleChanged}
+-- local SUBSCRIPTION_TARGET = {hs.window.filter.hasWindow}
+local SUBSCRIPTION_TARGET = {hs.window.filter.windowVisible}
 
 local WindowModel = {}
 WindowModel.new = function()
@@ -12,6 +14,7 @@ WindowModel.new = function()
     obj.previousWindow = nil
 
     obj.windowFilter = hs.window.filter.defaultCurrentSpace
+    -- obj.windowFilter = hs.window.filter.default
     obj.subscriptionCallback = function() end
 
     obj.init = function(self)
@@ -46,12 +49,15 @@ WindowModel.new = function()
         return copiedCachedOrderedWindows
     end
 
-    obj.getWindowIdBasedOrderedWindows = function(self)
-        local windowIdBasedOrderedWindows = self:copyCachedOrderedWindows()
-        table.sort(windowIdBasedOrderedWindows, function(a, b)
-            return (a:id() < b:id())
-        end)
-        return windowIdBasedOrderedWindows
+    obj.getCreatedOrderedWindows = function(self)
+        return self.windowFilter:getWindows(hs.window.filter.sortByCreated)
+
+        -- Another way: sorting by window id
+        -- local windowIdBasedOrderedWindows = self:copyCachedOrderedWindows()
+        -- table.sort(windowIdBasedOrderedWindows, function(a, b)
+        --     return (a:id() < b:id())
+        -- end)
+        -- return windowIdBasedOrderedWindows
     end
 
     -- Note: "hs.window.orderedWindows()" cannot get "Hammerspoon Console" window. I don't know why that.
@@ -61,20 +67,20 @@ WindowModel.new = function()
 
         -- Here is another way, but it's slow.
         -- local orderedWindows = hs.window.orderedWindows()
-        -- orderedWindows = self.removeInvalidWindows(orderedWindows)
+
+        orderedWindows = self.removeInvalidWindows(orderedWindows)
 
         self.cachedOrderedWindows = orderedWindows
         return orderedWindows
     end
 
-    -- Deprecated
     obj.removeInvalidWindows = function(orderedWindows)
-        -- Google Chrome's search box is treated as visible window.
-        -- So you need remove such invalid windows.
         local cleanedOrderedWindows = {}
         for i = 1, #orderedWindows do
             local window = orderedWindows[i]
-            if window:subrole() ~= "AXUnknown" then
+            local subrole = window:subrole()
+            Debugger.log(window:application():name() .. " : " .. subrole)
+            if subrole ~= "AXUnknown" and subrole ~= "AXSystemDialog" and subrole ~= "" then
                 table.insert(cleanedOrderedWindows, window)
             end
         end
