@@ -74,7 +74,7 @@ path=(
     ~/bin/flutter/bin
     ~/.local/bin
     ~/.cargo/bin
-    ~/go/bin
+    /us/local/go/bin
     /usr/local/opt/mysql-client/bin
     $path[@]
 )
