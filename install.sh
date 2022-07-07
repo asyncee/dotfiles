@@ -31,10 +31,8 @@ echo ">>> Installed Hammerspoon config"
 #
 
 # Grc
-if ! [ -x "$(command -v grc)" ]; then
-    brew install grc
-    echo ">>> Installed grc"
-fi
+brew install grc
+echo ">>> Installed grc"
 
 # Oh-my-zsh
 rm -rf "$HOME/.oh-my-zsh"
@@ -49,22 +47,18 @@ echo ">>> Installed zsh config"
 #
 
 if ! [ -x "$(command -v nvim)" ]; then
-    brew install nvim
-    echo ">>> Installed neovim"
+    echo ">>> Installed neovim at least 0.8.0"
+    open https://github.com/neovim/neovim/releases/nightly
 fi
 
-if ! [ -x "$(command -v fzf)" ]; then
-    brew install fzf
-    echo ">>> Installed fzf"
-fi
+brew install tmux
+echo ">>> Installed tmux"
 
-if ! [ -x "$(command -v rg)" ]; then
-    brew install rg
-    echo ">>> Installed rg"
-fi
+brew install fzf ripgrep ag stylua fd bat delta ag gotags golangci-lint
+echo ">>> Installed extra deps"
 
 ln -sFfh "$DOTFILES/nvim" "$CONFIG/nvim"
-nvim +PlugInstall +qall
+nvim +PackerInstall
 echo ">>> Installed nvim config"
 if [ ! -d "$PYNVIMENVDIR/nvimenv" ]; then
     virtualenv -p python3 "$PYNVIMENVDIR/nvimenv"
