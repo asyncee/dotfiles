@@ -68,14 +68,11 @@ setopt COMPLETE_ALIASES  # Autocomplete aliases.
 typeset -U path
 path=(
     /usr/local/sbin
+    /usr/local/go/bin
     ~/bin
-    ~/.maven-dist/bin
-    ~/.ant-dist/bin
-    ~/bin/flutter/bin
+    ~/go/bin
     ~/.local/bin
     ~/.cargo/bin
-    /us/local/go/bin
-    /usr/local/opt/mysql-client/bin
     $path[@]
 )
 
