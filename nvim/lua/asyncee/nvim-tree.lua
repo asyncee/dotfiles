@@ -96,7 +96,7 @@ require("nvim-tree").setup({
 		update_root = false,
 		ignore_list = {},
 	},
-	ignore_ft_on_setup = { "alpha", "Telescope" },
+	ignore_ft_on_setup = { "alpha", "Telescope", "gitcommit" },
 	system_open = {
 		cmd = "",
 		args = {},
