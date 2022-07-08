@@ -44,6 +44,7 @@ return packer.startup(function(use)
 	use({ "jose-elias-alvarez/null-ls.nvim" })
 	use({ "RRethy/vim-illuminate" })
 	use({ "glepnir/lspsaga.nvim", branch = "main" })
+	use({ "onsails/lspkind.nvim" })
 
 	-- Treesitter
 	use({ "nvim-treesitter/nvim-treesitter" })

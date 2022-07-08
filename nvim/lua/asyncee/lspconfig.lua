@@ -1,5 +1,6 @@
 local installer = require("nvim-lsp-installer")
 local lspconfig = require("lspconfig")
+local util = require("lspconfig/util")
 
 installer.setup({
 	ensure_installed = { "gopls", "sumneko_lua" },
@@ -48,4 +49,15 @@ lspconfig.sumneko_lua.setup({
 lspconfig.gopls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
+	cmd = { "gopls", "serve" },
+	filetypes = { "go", "gomod" },
+	root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+	settings = {
+		gopls = {
+			analyses = {
+				unusedparams = true,
+			},
+			staticcheck = true,
+		},
+	},
 })
