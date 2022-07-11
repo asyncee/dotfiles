@@ -83,10 +83,15 @@ return packer.startup(function(use)
 	use({ "stevearc/dressing.nvim" }) -- Use telescope for pickers
 
 	-- Keymaps
+	use({ "mrjones2014/legendary.nvim" })
 	use({ "folke/which-key.nvim" })
 
 	-- Git
 	use({ "lewis6991/gitsigns.nvim" })
+
+	-- Marks
+	use({ "chentoast/marks.nvim" })
+	use({ "ThePrimeagen/harpoon" })
 
 	-- Helpers
 	use({ "kyazdani42/nvim-web-devicons" })
@@ -105,6 +110,7 @@ return packer.startup(function(use)
 	-- Navigation
 	use({ "kyazdani42/nvim-tree.lua" })
 	use({ "goolord/alpha-nvim" })
+	use({ "kdheepak/tabline.nvim" })
 
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then

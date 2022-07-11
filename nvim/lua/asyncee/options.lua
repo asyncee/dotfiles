@@ -29,6 +29,7 @@ vim.opt.iskeyword:append("-")
 vim.opt.linebreak = true
 vim.opt.showbreak = ">"
 vim.opt.autowrite = true
+vim.opt.autowriteall = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.autochdir = true
