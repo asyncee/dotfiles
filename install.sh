@@ -5,7 +5,6 @@ CONFIG="$HOME/.config"
 PYNVIMENVDIR="$HOME/.pyenv"
 
 mkdir -p $CONFIG
-mkdir -p $PYNVIMENVDIR
 
 #
 # Git
@@ -60,10 +59,3 @@ echo ">>> Installed extra deps"
 ln -sFfh "$DOTFILES/nvim" "$CONFIG/nvim"
 nvim +PackerInstall
 echo ">>> Installed nvim config"
-if [ ! -d "$PYNVIMENVDIR/nvimenv" ]; then
-    virtualenv -p python3 "$PYNVIMENVDIR/nvimenv"
-    $PYNVIMENVDIR/nvimenv/bin/pip install pynvim
-    $PYNVIMENVDIR/nvimenv/bin/python -c 'import pynvim'
-    echo ">>> Installed nvim python support"
-fi
-echo ">>> Do not forget to install VimR: https://github.com/qvacua/vimr/releases"

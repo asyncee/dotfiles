@@ -6,6 +6,10 @@ wk.setup({})
 -- Terminal
 -- Toggle normal terminal mode by hitting control+f
 vim.keymap.set("t", "<C-x>", [[<C-\><C-n>]], {})
+vim.keymap.set("t", "<C-w>l", [[<C-\><C-n><C-w>l]], {}) -- Switch to window on right
+vim.keymap.set("t", "<C-w>k", [[<C-\><C-n><C-w>k]], {}) -- Switch to window on top
+vim.keymap.set("t", "<C-w>j", [[<C-\><C-n><C-w>j]], {}) -- Switch to window on bottom
+vim.keymap.set("t", "<C-w>h", [[<C-\><C-n><C-w>h]], {}) -- Switch to window on left
 wk.register({ ["<C-t>"] = { require("FTerm").toggle, "Terminal" } }, { mode = "n" })
 wk.register({ ["<C-t>"] = { require("FTerm").toggle, "Terminal" } }, { mode = "t" })
 

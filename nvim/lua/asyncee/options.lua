@@ -51,5 +51,4 @@ vim.opt.relativenumber = true
 --vim.opt.textwidth = 79
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
-vim.opt.timeoutlen = 1000
 vim.opt.updatetime = 100
