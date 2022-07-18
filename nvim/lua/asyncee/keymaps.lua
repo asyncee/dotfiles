@@ -80,3 +80,8 @@ wk.register({
 	["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "focus nvimtree" },
 	["<leader>f"] = { "<cmd> NvimTreeFindFile<CR>", "find current file" },
 })
+
+-- Bufdelete
+-- Remap bd to Bdelete to close buffer and preserve it's window
+vim.cmd("cnoreabbrev bd Bdelete")
+vim.cmd("cnoreabbrev bdelete Bdelete")

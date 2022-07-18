@@ -106,6 +106,8 @@ return packer.startup(function(use)
 	use({ "numToStr/FTerm.nvim" })
 	use({ "folke/todo-comments.nvim" })
 	use({ "kevinhwang91/nvim-bqf" })
+	use({ "famiu/bufdelete.nvim" })
+	use({ "p00f/nvim-ts-rainbow" })
 
 	-- Navigation
 	use({ "kyazdani42/nvim-tree.lua" })
