@@ -11,10 +11,10 @@ vim.keymap.set("t", "<C-j>", [[<C-\><C-n><C-w>j]], {}) -- Switch to window on bo
 vim.keymap.set("t", "<C-h>", [[<C-\><C-n><C-w>h]], {}) -- Switch to window on left
 wk.register({ ["<C-t>"] = { "<cmd>FloatermToggle<CR>", "Toggle terminal" } }, { mode = "n" })
 wk.register({ ["<C-t>"] = { "<cmd>FloatermToggle<CR>", "Toggle terminal" } }, { mode = "t" })
-wk.register({ ["<Leader>tn"] = { "<cmd>FloatermNext<CR>", "Next terminal" } }, { mode = "t" })
-wk.register({ ["<Leader>tp"] = { "<cmd>FloatermPrev<CR>", "Prev terminal" } }, { mode = "t" })
-wk.register({ ["<Leader>tc"] = { "<cmd>FloatermNew<CR>", "New terminal" } }, { mode = "n" })
-wk.register({ ["<Leader>tc"] = { "<cmd>FloatermNew<CR>", "New terminal" } }, { mode = "t" })
+wk.register({ [",tn"] = { "<cmd>FloatermNext<CR>", "Next terminal" } }, { mode = "t" })
+wk.register({ [",tp"] = { "<cmd>FloatermPrev<CR>", "Prev terminal" } }, { mode = "t" })
+wk.register({ [",tc"] = { "<cmd>FloatermNew<CR>", "New terminal" } }, { mode = "n" })
+wk.register({ [",tc"] = { "<cmd>FloatermNew<CR>", "New terminal" } }, { mode = "t" })
 
 -- Show / search keymaps
 wk.register({
