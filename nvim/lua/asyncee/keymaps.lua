@@ -4,14 +4,17 @@ local wk = require("which-key")
 wk.setup({})
 
 -- Terminal
--- Toggle normal terminal mode by hitting control+f
-vim.keymap.set("t", "<C-x>", [[<C-\><C-n>]], {})
-vim.keymap.set("t", "<C-w>l", [[<C-\><C-n><C-w>l]], {}) -- Switch to window on right
-vim.keymap.set("t", "<C-w>k", [[<C-\><C-n><C-w>k]], {}) -- Switch to window on top
-vim.keymap.set("t", "<C-w>j", [[<C-\><C-n><C-w>j]], {}) -- Switch to window on bottom
-vim.keymap.set("t", "<C-w>h", [[<C-\><C-n><C-w>h]], {}) -- Switch to window on left
-wk.register({ ["<C-t>"] = { require("FTerm").toggle, "Terminal" } }, { mode = "n" })
-wk.register({ ["<C-t>"] = { require("FTerm").toggle, "Terminal" } }, { mode = "t" })
+vim.keymap.set("t", "<C-x>", [[<C-\><C-n>]], {}) -- move terminal into normal mode
+vim.keymap.set("t", "<C-l>", [[<C-\><C-n><C-w>l]], {}) -- Switch to window on right
+vim.keymap.set("t", "<C-k>", [[<C-\><C-n><C-w>k]], {}) -- Switch to window on top
+vim.keymap.set("t", "<C-j>", [[<C-\><C-n><C-w>j]], {}) -- Switch to window on bottom
+vim.keymap.set("t", "<C-h>", [[<C-\><C-n><C-w>h]], {}) -- Switch to window on left
+wk.register({ ["<C-t>"] = { "<cmd>FloatermToggle<CR>", "Toggle terminal" } }, { mode = "n" })
+wk.register({ ["<C-t>"] = { "<cmd>FloatermToggle<CR>", "Toggle terminal" } }, { mode = "t" })
+wk.register({ ["<Leader>tn"] = { "<cmd>FloatermNext<CR>", "Next terminal" } }, { mode = "t" })
+wk.register({ ["<Leader>tp"] = { "<cmd>FloatermPrev<CR>", "Prev terminal" } }, { mode = "t" })
+wk.register({ ["<Leader>tc"] = { "<cmd>FloatermNew<CR>", "New terminal" } }, { mode = "n" })
+wk.register({ ["<Leader>tc"] = { "<cmd>FloatermNew<CR>", "New terminal" } }, { mode = "t" })
 
 -- Show / search keymaps
 wk.register({
