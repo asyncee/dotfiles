@@ -88,3 +88,33 @@ wk.register({
 -- Remap bd to Bdelete to close buffer and preserve it's window
 vim.cmd("cnoreabbrev bd Bdelete")
 vim.cmd("cnoreabbrev bdelete Bdelete")
+
+-- dap
+local dap = require("dap")
+local widgets = require("dap.ui.widgets")
+
+wk.register({
+	["<leader>dh"] = { dap.toggle_breakpoint, "toggle breakpoint" },
+	["<leader>dH"] = {
+		":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
+		"toggle breakpoint condition",
+	},
+	["<leader>do"] = { dap.step_out, "step out" },
+	["<leader>ds"] = { dap.step_into, "step into" },
+	["<leader>dx"] = { dap.step_over, "step over" },
+	["<leader>dc"] = { dap.continue, "continue" },
+	["<leader>drc"] = { dap.run_to_cursor, "run to cursor" },
+	["<leader>dt"] = { dap.terminate, "terminate" },
+	["<leader>dR"] = { dap.clear_breakpoints, "clear breakpoints" },
+	["<leader>de"] = { dap.set_exception_breakpoints, "set exception breakpoints" },
+	["<leader>dw"] = { widgets.hover, "dap hover" },
+	["<leader>d?"] = {
+		function()
+			widgets.centered_float(widgets.scopes)
+		end,
+		"dap scopes",
+	},
+	["<leader>dk"] = { ':lua require"dap".up()<CR>zz', "dap up" },
+	["<leader>dj"] = { ':lua require"dap".down()<CR>zz', "dap down" },
+	["<leader>dr"] = { ':lua require"dap".repl.toggle({}, "vsplit")<CR><C-w>l', "dap repl" },
+})

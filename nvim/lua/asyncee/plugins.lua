@@ -37,6 +37,8 @@ return packer.startup(function(use)
 
 	-- Themes
 	use({ "ray-x/starry.nvim" })
+	use({ "folke/tokyonight.nvim" })
+	use({ "catppuccin/nvim", as = "catppuccin" })
 
 	-- LSP
 	use({ "williamboman/nvim-lsp-installer" })
@@ -60,6 +62,11 @@ return packer.startup(function(use)
 	use({ "L3MON4D3/LuaSnip" })
 	use({ "rafamadriz/friendly-snippets" })
 	use({ "ray-x/lsp_signature.nvim" })
+
+	-- DAP
+	use({ "mfussenegger/nvim-dap" })
+	use({ "leoluz/nvim-dap-go" })
+	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 
 	-- Golang
 	use({ "ray-x/guihua.lua", run = "cd lua/fzy && make" })
