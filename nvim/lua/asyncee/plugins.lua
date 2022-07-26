@@ -67,6 +67,7 @@ return packer.startup(function(use)
 	use({ "mfussenegger/nvim-dap" })
 	use({ "leoluz/nvim-dap-go" })
 	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+	use({ "theHamsta/nvim-dap-virtual-text" })
 
 	-- Golang
 	use({ "ray-x/guihua.lua", run = "cd lua/fzy && make" })
