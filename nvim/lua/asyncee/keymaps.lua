@@ -4,11 +4,6 @@ local wk = require("which-key")
 wk.setup({})
 
 -- Terminal
-vim.keymap.set("t", "<C-x>", [[<C-\><C-n>]], {}) -- move terminal into normal mode
-vim.keymap.set("t", "<C-l>", [[<C-\><C-n><C-w>l]], {}) -- Switch to window on right
-vim.keymap.set("t", "<C-k>", [[<C-\><C-n><C-w>k]], {}) -- Switch to window on top
-vim.keymap.set("t", "<C-j>", [[<C-\><C-n><C-w>j]], {}) -- Switch to window on bottom
-vim.keymap.set("t", "<C-h>", [[<C-\><C-n><C-w>h]], {}) -- Switch to window on left
 wk.register({ ["<C-t>"] = { "<cmd>FloatermToggle<CR>", "Toggle terminal" } }, { mode = "n" })
 wk.register({ ["<C-t>"] = { "<cmd>FloatermToggle<CR>", "Toggle terminal" } }, { mode = "t" })
 wk.register({ [",tn"] = { "<cmd>FloatermNext<CR>", "Next terminal" } }, { mode = "t" })
