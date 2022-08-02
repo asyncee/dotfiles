@@ -75,6 +75,14 @@ wk.register({
 		e = { "<cmd> Telescope oldfiles <CR>", "Recents" },
 		c = { "<cmd> Telescope colorscheme <CR>", "Theme" },
 	},
+	["<leader>fd"] = {
+		name = "+telescope dap",
+		c = { "<cmd> Telescope dap commands <CR>", "Dap commands" },
+		g = { "<cmd> Telescope dap configurations <CR>", "Dap configurations" },
+		b = { "<cmd> Telescope dap list_breakpoints <CR>", "Dap breakpoints" },
+		v = { "<cmd> Telescope dap variables <CR>", "Dap variables" },
+		f = { "<cmd> Telescope dap frames <CR>", "Dap frames" },
+	},
 })
 
 -- Nvim-tree
