@@ -121,3 +121,7 @@ wk.register({
 	["<leader>dj"] = { ':lua require"dap".down()<CR>zz', "dap down" },
 	["<leader>dr"] = { ':lua require"dap".repl.toggle({}, "vsplit")<CR><C-w>l', "dap repl" },
 })
+
+-- Avoid neovim bug when it refuses to close when there are terminal buffers
+vim.cmd("command Z wa | qa")
+vim.cmd("cabbrev wqa Z")
