@@ -4,6 +4,7 @@ local wk = require("which-key")
 wk.setup({})
 
 -- Terminal
+vim.keymap.set("t", "<C-x>", [[<C-\><C-n>]], {}) -- move terminal into normal mode
 wk.register({ ["<C-t>"] = { "<cmd>FloatermToggle<CR>", "Toggle terminal" } }, { mode = "n" })
 wk.register({ ["<C-t>"] = { "<cmd>FloatermToggle<CR>", "Toggle terminal" } }, { mode = "t" })
 wk.register({ [",tn"] = { "<cmd>FloatermNext<CR>", "Next terminal" } }, { mode = "t" })
