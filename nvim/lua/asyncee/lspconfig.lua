@@ -1,18 +1,25 @@
-local installer = require("nvim-lsp-installer")
-local lspconfig = require("lspconfig")
-local util = require("lspconfig/util")
-
-installer.setup({
-	ensure_installed = { "gopls", "sumneko_lua" },
-	automatic_installation = true,
+require("mason").setup({
 	ui = {
 		icons = {
-			server_installed = "✓",
-			server_pending = "➜",
-			server_uninstalled = "✗",
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗",
 		},
 	},
 })
+require("mason-lspconfig").setup({
+	ensure_installed = { "gopls", "sumneko_lua" },
+	automatic_installation = true,
+})
+require("mason-tool-installer").setup({
+	ensure_installed = {
+		"lua-language-server",
+		"gopls",
+		"stylua",
+	},
+})
+local lspconfig = require("lspconfig")
+local util = require("lspconfig/util")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
