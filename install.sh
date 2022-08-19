@@ -22,17 +22,17 @@ fi
 # Link configuration
 mkdir -p $CONFIG
 
-ln -sFfh "$DOTFILES/git" "$CONFIG/git"
-ln -sFfh "$DOTFILES/ideavimrc" "$HOME/.ideavimrc"
-ln -sFfh "$DOTFILES/hammerspoon" "$HOME/.hammerspoon"
-ln -sFfh "$DOTFILES/nvim" "$CONFIG/nvim"
+ln -sFf "$DOTFILES/git" "$CONFIG/git"
+ln -sFf "$DOTFILES/ideavimrc" "$HOME/.ideavimrc"
+ln -sFf "$DOTFILES/hammerspoon" "$HOME/.hammerspoon"
+ln -sFf "$DOTFILES/nvim" "$CONFIG/nvim"
 
 # Oh-my-zsh
 rm -rf "$HOME/.oh-my-zsh"
 rm "$HOME/.zshrc"
 RUNZSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 rm "$HOME/.zshrc"
-ln -sFfh "$DOTFILES/oh-my-zsh/zshrc" "$HOME/.zshrc"
+ln -sFf "$DOTFILES/oh-my-zsh/zshrc" "$HOME/.zshrc"
 
 # Vim
 if ! [ -x "$(command -v nvim)" ]; then
