@@ -12,27 +12,28 @@ if [ "$SYSTEM" = "Darwin" ]; then
     brew install $BREW_PACKAGES
 else
     sudo apt install $DEB_PACKAGES
-    # stylua
-    if ! [ -x "$(command -v stylua)" ]; then
-        echo ">>> Please install stylua"
-        open "https://github.com/JohnnyMorganz/StyLua#installation"
-    fi
 fi
 
 # Link configuration
 mkdir -p $CONFIG
 
-ln -sFf "$DOTFILES/git" "$CONFIG/git"
-ln -sFf "$DOTFILES/ideavimrc" "$HOME/.ideavimrc"
-ln -sFf "$DOTFILES/hammerspoon" "$HOME/.hammerspoon"
-ln -sFf "$DOTFILES/nvim" "$CONFIG/nvim"
+# TODO: use mv
+rm -rf "$CONFIG/git"
+rm -rf "$CONFIG/nvim"
+rm -rf "$HOME/.hammerspoon"
+rm -rf "$HOME/.ideavimrc"
+
+ln -sf "$DOTFILES/git" "$CONFIG/git"
+ln -sf "$DOTFILES/ideavimrc" "$HOME/.ideavimrc"
+ln -sf "$DOTFILES/hammerspoon" "$HOME/.hammerspoon"
+ln -sf "$DOTFILES/nvim" "$CONFIG/nvim"
 
 # Oh-my-zsh
 rm -rf "$HOME/.oh-my-zsh"
 rm "$HOME/.zshrc"
 RUNZSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 rm "$HOME/.zshrc"
-ln -sFf "$DOTFILES/oh-my-zsh/zshrc" "$HOME/.zshrc"
+ln -sf "$DOTFILES/oh-my-zsh/zshrc" "$HOME/.zshrc"
 
 # Vim
 if ! [ -x "$(command -v nvim)" ]; then
