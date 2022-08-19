@@ -72,7 +72,6 @@ path=(
     ~/bin
     ~/go/bin
     ~/.local/bin
-    ~/.cargo/bin
     $path[@]
 )
 
@@ -138,17 +137,14 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
-# Fnm
-eval "$(fnm env)"
-
-# Cargo
-source $HOME/.cargo/env
-
 # Load zsh configuration.
 source $ZSH/oh-my-zsh.sh
 
 # Allow openssl libraries to be dynamically loaded.
 # This is crucial to have this command because python
 # crashes otherwise (libcrypto.dylib is loaded in unsafe way).
-export DYLD_LIBRARY_PATH=$(brew --prefix openssl@1.1)/lib:$DYLD_LIBRARY_PATH
+OS="$(uname -s)"
+if [ "$OS" = "Darwin" ]; then
+    export DYLD_LIBRARY_PATH=$(brew --prefix openssl@1.1)/lib:$DYLD_LIBRARY_PATH
+fi
 
