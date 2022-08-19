@@ -87,10 +87,7 @@ return packer.startup(function(use)
 
 	-- Telescope
 	use({ "nvim-telescope/telescope.nvim" })
-	use({
-		"nvim-telescope/telescope-fzf-native.nvim",
-		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-	})
+        use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 	use({ "stevearc/dressing.nvim" }) -- Use telescope for pickers
 
 	-- Keymaps
