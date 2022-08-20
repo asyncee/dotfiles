@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# NOTE: to launch tmux as a shell: /usr/bin/tmux new-session -A
+
 DOTFILES="$HOME/.dotfiles"
 CONFIG="$HOME/.config"
 SYSTEM=$(uname -s)
@@ -34,11 +36,13 @@ rm -rf "$CONFIG/git"
 rm -rf "$CONFIG/nvim"
 rm -rf "$HOME/.hammerspoon"
 rm -rf "$HOME/.ideavimrc"
+rm -rf "$HOME/.tmux.conf"
 
 ln -sf "$DOTFILES/git" "$CONFIG/git"
 ln -sf "$DOTFILES/ideavimrc" "$HOME/.ideavimrc"
 ln -sf "$DOTFILES/hammerspoon" "$HOME/.hammerspoon"
 ln -sf "$DOTFILES/nvim" "$CONFIG/nvim"
+ln -sf "$DOTFILES/tmux.conf" "$HOME/.tmux.conf"
 
 # Oh-my-zsh
 rm -rf "$HOME/.oh-my-zsh"
