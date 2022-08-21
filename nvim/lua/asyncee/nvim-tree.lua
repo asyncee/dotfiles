@@ -118,7 +118,6 @@ require("nvim-tree").setup({
 	},
 	filesystem_watchers = {
 		enable = true,
-		interval = 100,
 		debounce_delay = 50,
 	},
 	git = {
