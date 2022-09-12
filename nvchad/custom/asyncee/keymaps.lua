@@ -1,21 +1,4 @@
-require("legendary").setup()
-
 local wk = require("which-key")
-wk.setup({})
-
--- Terminal
-vim.keymap.set("t", "<C-x>", [[<C-\><C-n>]], {}) -- move terminal into normal mode
-wk.register({ ["<C-t>"] = { "<cmd>FloatermToggle<CR>", "Toggle terminal" } }, { mode = "n" })
-wk.register({ ["<C-t>"] = { "<cmd>FloatermToggle<CR>", "Toggle terminal" } }, { mode = "t" })
-wk.register({ [",tn"] = { "<cmd>FloatermNext<CR>", "Next terminal" } }, { mode = "t" })
-wk.register({ [",tp"] = { "<cmd>FloatermPrev<CR>", "Prev terminal" } }, { mode = "t" })
-wk.register({ [",tc"] = { "<cmd>FloatermNew<CR>", "New terminal" } }, { mode = "n" })
-wk.register({ [",tc"] = { "<cmd>FloatermNew<CR>", "New terminal" } }, { mode = "t" })
-
--- Show / search keymaps
-wk.register({
-	["<Leader>km"] = { "<cmd>Legendary keymaps<CR>", "Show keymaps" },
-})
 
 -- Marks / harpoon
 wk.register({
@@ -24,11 +7,6 @@ wk.register({
 	["<Leader>mn"] = { require("harpoon.ui").nav_next, "Next mark" },
 	["<Leader>mp"] = { require("harpoon.ui").nav_prev, "Prev mark" },
 })
-
--- Barbar
-wk.register({
-	["<C-p>"] = { "<cmd>BufferPick<CR>", "Pick buffer" },
-}, { mode = "n" })
 
 -- Code / lsp mappings
 wk.register({
@@ -54,11 +32,6 @@ wk.register({
 	["<C-i>"] = { require("telescope").extensions.goimpl.goimpl, "Implement Go interface" },
 }, { mode = "n" })
 
--- Code / lsp mappings (visual mode)
-wk.register({
-	["<Leader>rca"] = { vim.lsp.buf.range_code_action, "Range code action" },
-}, { mode = "v" })
-
 -- Telescope
 wk.register({
 	["<leader>f"] = {
@@ -80,18 +53,6 @@ wk.register({
 		f = { "<cmd> Telescope dap frames <CR>", "Dap frames" },
 	},
 })
-
--- Nvim-tree
-wk.register({
-	["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree" },
-	["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "focus nvimtree" },
-	["<leader>f"] = { "<cmd> NvimTreeFindFile<CR>", "find current file" },
-})
-
--- Bufdelete
--- Remap bd to Bdelete to close buffer and preserve it's window
-vim.cmd("cnoreabbrev bd Bdelete")
-vim.cmd("cnoreabbrev bdelete Bdelete")
 
 -- dap
 local dap = require("dap")
@@ -122,7 +83,3 @@ wk.register({
 	["<leader>dj"] = { ':lua require"dap".down()<CR>zz', "dap down" },
 	["<leader>dr"] = { ':lua require"dap".repl.toggle({}, "vsplit")<CR><C-w>l', "dap repl" },
 })
-
--- Avoid neovim bug when it refuses to close when there are terminal buffers
-vim.cmd("command Z wa | qa")
-vim.cmd("cabbrev wqa Z")
