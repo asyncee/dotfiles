@@ -6,11 +6,6 @@ return {
 		override_options = overrides.alpha,
 	},
 
-	["folke/which-key.nvim"] = {
-		disable = true,
-		after = "legendary.nvim",
-	},
-
 	["neovim/nvim-lspconfig"] = {
 		config = function()
 			require("plugins.configs.lspconfig")
@@ -90,14 +85,6 @@ return {
 			})
 		end,
 	},
-	--
-	-- Keymaps
-	["mrjones2014/legendary.nvim"] = {
-		config = function()
-			require("legendary").setup({})
-		end,
-	},
-	--
 	-- -- Marks
 	-- ["chentoast/marks.nvim"] = {},
 	-- ["ThePrimeagen/harpoon"] = {},
