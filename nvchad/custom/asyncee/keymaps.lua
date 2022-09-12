@@ -10,8 +10,8 @@ wk.register({
 
 -- Code / lsp mappings
 wk.register({
-	["<Leader>dn"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "Diagnostics next" },
-	["<Leader>dp"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "Diagnostics prev" },
+	["<Leader>dn"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "Next diagnostics" },
+	["<Leader>dp"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "Previous diagnostics" },
 	["<Leader>di"] = { "<cmd>Lspsaga show_line_diagnostics<CR>", "Line diagnostics" },
 	["gD"] = { "<cmd> Telescope lsp_type_definitions<CR>", "Type definition" },
 	["gd"] = { "<cmd> Telescope lsp_definitions<CR>", "Definition" },
@@ -23,10 +23,9 @@ wk.register({
 	["K"] = { "<cmd>Lspsaga hover_doc<CR>", "Hover" },
 	["<C-k>"] = { "<cmd>Lspsaga signature_help<CR>", "Signature info" },
 	["<Leader>ca"] = { vim.lsp.buf.code_action, "Code action" },
-	["<Leader>rca"] = { vim.lsp.buf.range_code_action, "Range code action" },
 	["<Leader>rn"] = { vim.lsp.buf.rename, "Rename" },
-	["<Leader>ss"] = { "<cmd> Telescope lsp_dynamic_workspace_symbols<CR>", "Show symbols" },
-	["<Leader>sd"] = { "<cmd> Telescope treesitter<CR>", "Show document symbols" },
+	["<Leader>sw"] = { "<cmd> Telescope lsp_dynamic_workspace_symbols<CR>", "Workspace symbols" },
+	["<Leader>sd"] = { "<cmd> Telescope treesitter<CR>", "Document symbols" },
 
 	-- Golang specific
 	["<C-i>"] = { require("telescope").extensions.goimpl.goimpl, "Implement Go interface" },

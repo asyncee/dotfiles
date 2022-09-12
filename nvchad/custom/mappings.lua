@@ -13,7 +13,9 @@ M.nvim_tree = {
 }
 
 M.disabled = {
-	n = {},
+	n = {
+		["<leader>rn"] = "",
+	},
 }
 
 -- Avoid neovim bug when it refuses to close when there are terminal buffers
