@@ -6,6 +6,8 @@ return {
 		override_options = overrides.alpha,
 	},
 
+	["folke/which-key.nvim"] = { disable = false },
+
 	["neovim/nvim-lspconfig"] = {
 		config = function()
 			require("plugins.configs.lspconfig")
@@ -22,6 +24,7 @@ return {
 	},
 
 	["kyazdani42/nvim-tree.lua"] = {
+		cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile" },
 		override_options = overrides.nvimtree,
 	},
 
