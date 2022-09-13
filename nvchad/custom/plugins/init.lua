@@ -29,6 +29,11 @@ return {
 	},
 
 	["nvim-telescope/telescope.nvim"] = {
+		after = { "alpha-nvim", "project.nvim" },
+		config = function()
+			require("plugins.configs.telescope")
+			require("telescope").load_extension("projects")
+		end,
 		override_options = overrides.telescope,
 	},
 
@@ -47,23 +52,13 @@ return {
 			require("illuminate").configure({})
 		end,
 	},
-	-- ["glepnir/lspsaga.nvim"] = {},
-	-- ["onsails/lspkind.nvim"] = {},
+	["glepnir/lspsaga.nvim"] = {
+		config = function()
+			require("lspsaga").init_lsp_saga({})
+		end,
+	},
+	["folke/lsp-colors.nvim"] = {},
 
-	--
-	-- -- DAP
-	-- ["mfussenegger/nvim-dap"] = {},
-	-- ["rcarriga/nvim-dap-ui"] = {
-	--   after = "nvim-dap",
-	-- },
-	-- ["theHamsta/nvim-dap-virtual-text"] = {
-	--   after = "nvim-dap",
-	-- },
-	-- ["nvim-telescope/telescope-dap.nvim"] = {
-	--   after = "nvim-dap",
-	-- },
-	-- ["leoluz/nvim-dap-go"] = {},
-	--
 	-- -- Golang
 	-- ["ray-x/guihua.lua"] = {
 	--   run = "cd lua/fzy && make",
@@ -88,14 +83,28 @@ return {
 			})
 		end,
 	},
-	-- -- Marks
-	-- ["chentoast/marks.nvim"] = {},
-	-- ["ThePrimeagen/harpoon"] = {},
-	--
+	-- Marks
+	["chentoast/marks.nvim"] = {
+		config = function()
+			require("marks").setup({})
+		end,
+	},
+
+	-- Project, sessions
+	["ahmedkhalf/project.nvim"] = {
+		config = function()
+			require("project_nvim").setup({})
+		end,
+	},
+	["Shatur/neovim-session-manager"] = {
+		config = function()
+			require("session_manager").setup({
+				autoload_mode = require("session_manager.config").AutoloadMode.Disabled,
+			})
+		end,
+	},
+
 	-- Helpers
-	-- ["ahmedkhalf/project.nvim"] = {},
-	-- ["Shatur/neovim-session-manager"] = {},
-	["folke/lsp-colors.nvim"] = {},
 	["folke/todo-comments.nvim"] = {
 		after = "plenary.nvim",
 		config = function()
@@ -103,5 +112,5 @@ return {
 		end,
 	},
 	["famiu/bufdelete.nvim"] = {},
-	-- ["p00f/nvim-ts-rainbow"] = {},
+	["p00f/nvim-ts-rainbow"] = {},
 }
