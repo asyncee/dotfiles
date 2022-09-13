@@ -24,6 +24,7 @@ M.lsp = {
 		["gr"] = { "<cmd> Telescope lsp_references<CR>", "lsp references" },
 		["gc"] = { "<cmd> Telescope lsp_incoming_calls<CR>", "lsp in calls" },
 		["go"] = { "<cmd> Telescope lsp_outgoing_calls<CR>", "lsp out calls" },
+		["gf"] = { "<cmd>Lspsaga lsp_finder<CR>", "lsp out calls" },
 		["K"] = { "<cmd>Lspsaga hover_doc<CR>", "lsp hover" },
 		["<C-k>"] = { "<cmd>Lspsaga signature_help<CR>", "lsp signature info" },
 		["<Leader>o"] = { "<cmd>LSoutlineToggle<CR>", "lsp outline" },
