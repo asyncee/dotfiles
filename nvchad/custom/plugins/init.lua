@@ -105,6 +105,8 @@ return {
 	},
 
 	-- Helpers
+	["sindrets/diffview.nvim"] = {},
+
 	["folke/todo-comments.nvim"] = {
 		after = "plenary.nvim",
 		config = function()

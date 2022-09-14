@@ -2,7 +2,7 @@ local M = {}
 
 M.telescope = {
 	n = {
-		["<Leader>km"] = { "<cmd>Telescope keymaps<CR>", "Show keymaps" },
+		["<leader>fc"] = { "<cmd> Telescope commands <CR>", "find commands" },
 	},
 }
 
