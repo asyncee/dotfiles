@@ -38,6 +38,22 @@ return {
 	},
 
 	-- Custom plugins
+	["nathom/filetype.nvim"] = {
+		config = function()
+			require("filetype").setup({
+				overrides = {
+					extensions = {
+						-- Set the filetype of *.nomad files to hcl
+						nomad = "hcl",
+					},
+					literal = {
+						-- Set the filetype of files named "Jenkinsfile" to groovy
+						Jenkinsfile = "groovy",
+					},
+				},
+			})
+		end,
+	},
 
 	["jose-elias-alvarez/null-ls.nvim"] = {
 		after = "nvim-lspconfig",

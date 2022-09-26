@@ -11,6 +11,7 @@ M.treesitter = {
 		"javascript",
 		"json",
 		"markdown",
+		"hcl",
 	},
 	rainbow = {
 		enable = true,
@@ -115,6 +116,19 @@ local delete_buffer = function(prompt_bufnr)
 end
 
 M.telescope = {
+	defaults = {
+		vimgrep_arguments = {
+			"rg",
+			"--color=never",
+			"--no-heading",
+			"--with-filename",
+			"--line-number",
+			"--column",
+			"--smart-case",
+			"--hidden",
+			"--no-ignore",
+		},
+	},
 	pickers = {
 		buffers = {
 			mappings = {
