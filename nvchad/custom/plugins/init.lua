@@ -75,17 +75,7 @@ return {
 	},
 	["folke/lsp-colors.nvim"] = {},
 
-	-- -- Golang
-	-- ["ray-x/guihua.lua"] = {
-	--   run = "cd lua/fzy && make",
-	-- },
-	-- ["ray-x/go.nvim"] = {},
-	-- ["nvim-lua/popup.nvim"] = {},
-	-- ["edolphin-ydf/goimpl.nvim"] = {
-	--   after = "popup",
-	-- },
-	--
-	-- -- UI
+	-- UI
 	["stevearc/dressing.nvim"] = {
 		config = function()
 			require("dressing").setup({
