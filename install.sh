@@ -6,7 +6,7 @@ DOTFILES="$HOME/.dotfiles"
 CONFIG="$HOME/.config"
 SYSTEM=$(uname -s)
 
-PACKAGES="zsh git git-flow grc tmux fzf ripgrep silversearcher-ag fd-find bat delta gcc tig"
+PACKAGES="zsh git git-flow grc tmux fzf ripgrep silversearcher-ag fd-find bat delta gcc tig htop"
 
 sudo apt install $PACKAGES
 
