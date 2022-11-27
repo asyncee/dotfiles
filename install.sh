@@ -31,5 +31,8 @@ RUNZSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/o
 rm "$HOME/.zshrc"
 ln -sf "$DOTFILES/oh-my-zsh/zshrc" "$HOME/.zshrc"
 
+echo "install neovim"
+echo "install nerdfonts: https://www.nerdfonts.com"
+echo "install powerline font: https://github.com/powerline/fonts"
 nvim +PackerInstall
 nvim +Mason
