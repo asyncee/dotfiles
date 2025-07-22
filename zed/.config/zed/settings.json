@@ -1,0 +1,105 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "base_keymap": "JetBrains",
+  "vim_mode": true,
+  "ui_font_size": 18,
+  "ui_font_family": "JetBrainsMonoNL Nerd Font",
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "buffer_font_size": 18,
+  "theme": {
+    "mode": "system",
+    "light": "Gruvbox Light Soft",
+    "dark": "Gruvbox Dark"
+  },
+  "file_types": {
+    "devicetree": ["*.overlay", "*.keymap"]
+  },
+  "scrollbar": {
+    "show": "never"
+  },
+  "tab_bar": {
+    "show": false
+  },
+  "autosave": "on_focus_change",
+  "bottom_dock_layout": "full",
+  "auto_install_extensions": {
+    "html": true,
+    "catppuccin": true,
+    "devicetree": false,
+    "tokyo-night": true
+  },
+  "cursor_blink": false,
+  "minimap": {
+    "show": "never"
+  },
+  "drag_and_drop_selection": {
+    "enabled": false
+  },
+  "toolbar": {
+    "breadcrumbs": true,
+    "quick_actions": true,
+    "selections_menu": true,
+    "agent_review": true,
+    "code_actions": true
+  },
+  "git": {
+    "inline_blame": {
+      "enabled": false
+    }
+  },
+  "preview_tabs": {
+    "enabled": false
+  },
+  "use_smartcase_search": true,
+  "wrap_guides": [80, 120],
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "terminal": {
+    "font_size": 14,
+    "toolbar": {
+      "breadcrumbs": false
+    }
+  },
+  "project_panel": {
+    "scrollbar": {
+      "show": "never"
+    }
+  },
+  "agent": {
+    // "enabled": false
+  },
+  "outline_panel": {
+    "scrollbar": {
+      "show": "never"
+    }
+  },
+  // Status bar.
+  // "project_panel": {"button": false },
+  // "outline_panel": {"button": false },
+  "collaboration_panel": { "button": false },
+  // "chat_panel": {"button": "never" },
+  // "git_panel": {"button": false },
+  // "notification_panel": {"button": false },
+  // "agent": {"button": false },
+  // "debugger": {"button": false },
+  // "diagnostics": {"button": false },
+  // "search": {"button": false },
+  // Control which items are shown/hidden in the title bar
+  "title_bar": {
+    // "show_branch_icon": false, // Show/hide branch icon beside branch switcher
+    // "show_branch_name": true, // Show/hide branch name
+    // "show_project_items": true, // Show/hide project host and name
+    // "show_onboarding_banner": true, // Show/hide onboarding banners
+    // "show_user_picture": true, // Show/hide user avatar
+    "show_sign_in": false // Show/hide sign-in button
+  }
+}
