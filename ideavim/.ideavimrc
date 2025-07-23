@@ -1,13 +1,43 @@
+# Options
 let mapleader=","
-set surround
-set easymotion
-set number relativenumber
-set ideavimsupport+=singleline
-set scrolloff=3
-
-set NERDTree
-set vim-paragraph-motion
+set scrolloff=5
+set hlsearch
+set smartcase
+set incsearch
+set number
+set relativenumber
 set highlightedyank
 
-map <leader>t :NERDTree<CR>
-map <leader>f :NERDTreeFind<CR>
+# Plugins
+set surround
+set commentary
+
+# https://github.com/JetBrains/ideavim/wiki/NERDTree-support
+set NERDTree
+
+map <leader>e :NERDTree<CR>
+
+# Key bindings
+map <leader>cf <Action>(ReformatCode)
+map <leader>d <Action>(Debug)
+map <leader>b <Action>(ToggleLineBreakpoint)
+
+map gh <Action>(QuickImplementations)
+
+map <leader>rr <Action>(RenameElement)
+
+map [d <Action>(GotoPreviousError)
+map ]d <Action>(GotoNextError)
+
+map <leader>sf <Action>(GotoFile)
+
+map <leader>dr <Action>(ChooseRunConfiguration)
+map <leader>dd <Action>(ChooseDebugConfiguration)
+
+nnoremap g; :action JumpToLastChange<Enter>
+nnoremap g, :action JumpToNextChange<Enter>
+
+map <C-w>< <Action>(StretchSplitToLeft)
+map <C-w>> <Action>(StretchSplitToRight)
+map <C-w>+ <Action>(StretchSplitToTop)
+map <C-w>- <Action>(StretchSplitToBottom)
